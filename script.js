@@ -30,20 +30,22 @@ const fetchTodaysWeather = () => {
     `;
 
       //Function to change backround color and icon depending on the weather.
-      const warmColdBackround = () => {
-        if (json.weather[0].main === "Clouds") {
+      const changeBackround = () => {
+        const weatherDescription = json.weather[0].main
+        
+        if (weatherDescription === "Clouds") {
           cityContainer.innerHTML += `
         <img src="./assets/icons/noun_Cloud_1188486.svg" alt="Cloud">
         <h1>Light a fire and get cosy. ${json.name} is looking grey today.</h1>`;
           document.body.style.backgroundColor = "#F4F7F8";
           document.body.style.color = "#F47775";
-        } else if (json.weather[0].main === "Rain") {
+        } else if (weatherDescription === "Rain") {
           cityContainer.innerHTML += `
         <img src="./assets/icons/noun_Umbrella_2030530.svg" alt="Umbrella">
         <h1>Don't forget your umbrella. It's wet in ${json.name} today.</h1>`;
           document.body.style.backgroundColor = "#BDE8FA";
           document.body.style.color = "#164A68";
-        } else if (json.weather[0].main === "Clear") {
+        } else if (weatherDescription === "Clear") {
           cityContainer.innerHTML += `
         <img src="./assets/icons/noun_Sunglasses_2055147.svg" alt="Sunglasses">
         <h1>Get your sunnies on. ${json.name} is looking rather great today.</h1>`;
@@ -57,7 +59,7 @@ const fetchTodaysWeather = () => {
           document.body.style.color = "#FFFFFF"; //Just added this else for all other different weathers that's not "clouds, rain or clear". Next step would be to have a color & icon for each different weather groups.
         }
       };
-      warmColdBackround(); //Invoke function to show different colors.
+      changeBackround(); //Invoke function to show different colors.
     });
 };
 fetchTodaysWeather(); //Invoke function to show todays weather city.
@@ -72,7 +74,7 @@ const fetchWeatherForecast = () => {
     })
     .then((json) => {
       const filterForcast = json.list.filter((day) =>
-        day.dt_txt.includes("12:00")
+        day.dt_txt.includes("06:00")
       );
       filterForcast.forEach((day) => {
         const dayOfWeek = new Date(day.dt * 1000);

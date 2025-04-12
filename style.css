@@ -8,14 +8,16 @@
 #weather-container {
   font-size: 21px;
   line-height: 6px;
-  margin: 49px;
+  margin: 49px auto;
   padding-bottom: 20px;
+  max-width: 600px;
+  text-align: left;
 }
 
-
 #city-container {
-  margin: 40px;
+  margin: 40px auto;
   max-width: 600px;
+  text-align: left;
 }
 
 #weather-week-container {
@@ -23,9 +25,10 @@
   grid-template-columns: 1fr 1fr;
   grid-gap: 1px;
   font-size: 21px;
-  margin: 40px;
+  margin: 40px auto;
   padding-bottom: 20px;
   max-width: 600px;
+  text-align: left;
 }
 
 .days {
@@ -35,9 +38,8 @@
 }
 
 .temp {
-text-align: right;
-border-bottom: dashed 1px;
-margin-top: 10px;
-padding-bottom: 6px;
+  text-align: right;
+  border-bottom: dashed 1px;
+  margin-top: 10px;
+  padding-bottom: 6px;
 }
-
